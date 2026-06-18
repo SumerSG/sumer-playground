@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000000;
+  color: #00FFFF;
+  font-family: 'VT323', 'Courier New', monospace;
+  cursor: crosshair;
+  overflow-x: hidden;
+}
+
+/* Star background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, white, transparent),
+    radial-gradient(1px 1px at 40px 70px, white, transparent),
+    radial-gradient(1px 1px at 50px 160px, white, transparent),
+    radial-gradient(1px 1px at 90px 40px, white, transparent),
+    radial-gradient(1px 1px at 130px 80px, white, transparent),
+    radial-gradient(1px 1px at 160px 120px, white, transparent),
+    radial-gradient(2px 2px at 200px 50px, #00FFFF, transparent),
+    radial-gradient(1px 1px at 250px 180px, white, transparent),
+    radial-gradient(1px 1px at 300px 30px, #FF00FF, transparent),
+    radial-gradient(1px 1px at 350px 100px, white, transparent),
+    radial-gradient(1px 1px at 400px 150px, #FFFF00, transparent),
+    radial-gradient(1px 1px at 450px 60px, white, transparent),
+    radial-gradient(1px 1px at 500px 200px, #00FF00, transparent),
+    radial-gradient(1px 1px at 550px 90px, white, transparent),
+    radial-gradient(1px 1px at 600px 140px, white, transparent),
+    radial-gradient(1px 1px at 650px 40px, #FF00FF, transparent),
+    radial-gradient(1px 1px at 700px 170px, white, transparent),
+    radial-gradient(1px 1px at 750px 80px, #00FFFF, transparent),
+    radial-gradient(1px 1px at 800px 110px, white, transparent),
+    radial-gradient(1px 1px at 850px 190px, #FFFF00, transparent);
+  background-repeat: repeat;
+  background-size: 900px 220px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Scanlines overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+::selection {
+  background-color: #FF00FF;
+  color: #000000;
+}
+
+/* Y2K Retro Utility Classes */
+.y2k-border {
+  @apply border-2 border-[#00FFFF];
+  box-shadow:
+    inset 0 0 0 1px #000000,
+    0 0 5px #00FFFF,
+    0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.y2k-border-pink {
+  @apply border-2 border-[#FF00FF];
+  box-shadow:
+    inset 0 0 0 1px #000000,
+    0 0 5px #FF00FF,
+    0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.y2k-border-yellow {
+  @apply border-2 border-[#FFFF00];
+  box-shadow:
+    inset 0 0 0 1px #000000,
+    0 0 5px #FFFF00,
+    0 0 10px rgba(255, 255, 0, 0.5);
+}
+
+.y2k-btn {
+  @apply px-4 py-2 border-2 font-pixel text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer;
+  background: linear-gradient(180deg, #000033 0%, #000000 100%);
+  border-color: #00FFFF;
+  color: #00FFFF;
+  box-shadow: 0 0 5px #00FFFF, inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.y2k-btn:hover {
+  background: #000033;
+  box-shadow: 0 0 15px #00FFFF, 0 0 30px rgba(0,255,255,0.5);
+  text-shadow: 0 0 5px #00FFFF;
+  transform: scale(1.02);
+}
+
+.y2k-btn-pink {
+  @apply y2k-btn;
+  border-color: #FF00FF;
+  color: #FF00FF;
+  box-shadow: 0 0 5px #FF00FF, inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.y2k-btn-pink:hover {
+  box-shadow: 0 0 15px #FF00FF, 0 0 30px rgba(255,0,255,0.5);
+  text-shadow: 0 0 5px #FF00FF;
+}
+
+.y2k-panel {
+  @apply p-4 border-2 relative;
+  background: rgba(0, 0, 51, 0.8);
+  border-color: #00FFFF;
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.1),
+    0 0 5px #00FFFF;
+}
+
+.y2k-panel-yellow {
+  @apply y2k-panel;
+  border-color: #FFFF00;
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 0, 0.1),
+    0 0 5px #FFFF00;
+}
+
+.y2k-panel-pink {
+  @apply y2k-panel;
+  border-color: #FF00FF;
+  box-shadow:
+    inset 0 0 20px rgba(255, 0, 255, 0.1),
+    0 0 5px #FF00FF;
+}
+
+.y2k-marquee-container {
+  @apply overflow-hidden whitespace-nowrap;
+  background: rgba(0, 0, 51, 0.9);
+  border-top: 1px solid #FF00FF;
+  border-bottom: 1px solid #FF00FF;
+}
+
+.y2k-marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+.y2k-tag {
+  @apply inline-block px-2 py-1 border text-xs font-pixel;
+  background: #000033;
+  border-color: #00FF00;
+  color: #00FF00;
+  box-shadow: 0 0 3px #00FF00;
+}
+
+/* Classic retro table style */
+.y2k-table {
+  @apply w-full border-collapse;
+}
+
+.y2k-table th {
+  @apply p-2 border-2 text-left font-pixel text-xs;
+  background: #000033;
+  border-color: #FF00FF;
+  color: #FF00FF;
+}
+
+.y2k-table td {
+  @apply p-2 border-2;
+  border-color: #00FFFF;
+  color: #00FFFF;
+}
+
+.y2k-table tr:hover td {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 1px solid #00FFFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000033;
+  border: 2px solid #00FFFF;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00FFFF;
+}
+
+/* Custom cursor for links */
+a, button {
+  cursor: crosshair;
+}
+
+a:hover {
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Star decoration */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.star {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Guestbook textarea style */
+textarea.y2k-input,
+input.y2k-input {
+  @apply border-2 p-2 w-full font-mono text-lg;
+  background: #000011;
+  border-color: #00FFFF;
+  color: #00FFFF;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+textarea.y2k-input:focus,
+input.y2k-input:focus {
+  outline: none;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.4), 0 0 10px #00FFFF;
+}
